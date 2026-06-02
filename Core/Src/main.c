@@ -22,6 +22,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "EPD_Test.h"
+#include "minimal_display.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -98,7 +99,9 @@ int main(void)
   MX_SPI1_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-  EPD_test();
+  // EPD_test();
+  /* Show minimal multi-line text demo */
+  Display_SimpleText();
   /* USER CODE END 2 */
 
   /* Infinite loop */

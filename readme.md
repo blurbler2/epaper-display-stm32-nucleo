@@ -3,7 +3,10 @@
 ## Display
 Model: Waveshare 2.9" V2
 Display Controller: SSD1680 V2 
-Resolution:
+Resolution: 296x128
+
+https://www.waveshare.com/wiki/2.9inch_e-Paper_Module_Manual#Working_With_STM32
+
 
 ## STM32 Nucleo-WB55RG Board
 Der STM32WB55 hat:
@@ -52,33 +55,10 @@ cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=cma
 
 # Build
 cmake --build build --config Debug
-
-# (optional) show binary size - adjust path/name to your target ELF
-arm-none-eabi-size build/<config>/EPD-example.elf
 ```
 
-If you prefer CMake presets (file `CMakePresets.json` is included) you can use:
-
 ```bash
-cmake --preset debug
-cmake --build --preset debug
-```
 
-Flashing examples (adjust interface/target files and output paths to your setup):
-
-```bash
-# OpenOCD + ST-Link (example)
-openocd -f interface/stlink.cfg -f target/stm32wbx.cfg -c "program build/<config>/EPD-example.elf verify reset exit"
-
-# or using st-flash (binary must be created first)
-st-flash write build/<config>/EPD-example.bin 0x08000000
-```
-
-Notes:
-- Replace `<config>` and the artifact name with the actual build configuration and output produced by your CMake setup (for example `Debug/EPD-example.elf`).
-- If you need help detecting the produced ELF/BIN path, run `ls build -R` after a build to inspect outputs.
-
-```bash
 #FLASH
 openocd -s /opt/homebrew/share/openocd/scripts -f interface/stlink.cfg -f target/stm32wbx.cfg -c "program build/EPD-example.elf verify reset exit"
 ```

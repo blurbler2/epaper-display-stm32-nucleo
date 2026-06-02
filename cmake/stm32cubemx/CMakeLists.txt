@@ -27,11 +27,9 @@ set(MX_Application_Src
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/sysmem.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/syscalls.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../startup_stm32wb55xx_cm4.s
-    # Application sources (EPD drivers, tests, image data, config, GUI, fonts)
-    ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/EPD_2in9_V2_test.c
+    # Minimal application sources for simple text display
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/minimal_display.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/EPD_2in9_V2.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/ImageData.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/ImageData2.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Config/DEV_Config.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/GUI/GUI_Paint.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Fonts/font12.c

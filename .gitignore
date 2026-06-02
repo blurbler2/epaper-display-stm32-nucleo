@@ -1,0 +1,60 @@
+# Build directories
+/build/
+
+
+# CMake and build artifacts
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+build.ninja
+Makefile
+*.ninja
+
+# Generated binaries and intermediary files
+*.elf
+*.bin
+*.hex
+*.map
+*.a
+*.o
+*.obj
+*.lst
+*.d
+
+# Compiler database and IDE helpers
+compile_commands.json
+
+# STM32CubeMX / IDE files (user-specific)
+*.ioc.user
+
+# IDE/editor directories
+.vscode/
+.idea/
+*.code-workspace
+
+# macOS
+.DS_Store
+.AppleDouble
+._*
+
+# Temporary / backup files
+*~
+*.swp
+*.tmp
+*.bak
+
+# Logs
+*.log
+
+# Coverage
+*.gcda
+*.gcno
+
+# Python virtualenvs
+venv/
+ENV/
+env/
+
+# Misc
+.cache/
+.history/

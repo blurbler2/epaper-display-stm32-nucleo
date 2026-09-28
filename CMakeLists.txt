@@ -66,3 +66,25 @@ target_link_libraries(${CMAKE_PROJECT_NAME}
 
     # Add user defined libraries
 )
+
+# Hardware targets (need openocd and a Nucleo connected via ST-LINK):
+#   cmake --build build --target check-wiring   check e-paper wiring over SWD
+#   cmake --build build --target flash          check wiring, then flash
+find_program(OPENOCD openocd)
+if(OPENOCD)
+    set(OPENOCD_ARGS -d1 -f interface/stlink.cfg -f target/stm32wbx.cfg)
+    set(CHECK_WIRING ${OPENOCD} ${OPENOCD_ARGS} -f ${CMAKE_SOURCE_DIR}/tools/check_wiring.tcl)
+
+    add_custom_target(check-wiring
+        COMMAND ${CHECK_WIRING}
+        COMMENT "Checking e-paper wiring (nothing is flashed)"
+        USES_TERMINAL VERBATIM)
+
+    add_custom_target(flash
+        COMMAND ${CHECK_WIRING}
+        COMMAND ${OPENOCD} ${OPENOCD_ARGS}
+            -c "program $<TARGET_FILE:${CMAKE_PROJECT_NAME}> verify reset exit"
+        DEPENDS ${CMAKE_PROJECT_NAME}
+        COMMENT "Checking e-paper wiring, then flashing"
+        USES_TERMINAL VERBATIM)
+endif()

@@ -1,7 +1,10 @@
-/* Minimal display helper - draw multiple lines of text to the EPD */
+/* Minimal display helper - static text plus a periodically updated counter */
 #ifndef __MINIMAL_DISPLAY_H
 #define __MINIMAL_DISPLAY_H
 
-void Display_SimpleText(void);
+#include <stdint.h>
+
+void Display_Init(void);
+void Display_Update(uint32_t count);
 
 #endif

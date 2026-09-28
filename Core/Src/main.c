@@ -100,8 +100,9 @@ int main(void)
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
   // EPD_test();
-  /* Show minimal multi-line text demo */
-  Display_SimpleText();
+  /* Static text, then a counter redrawn every 10 s */
+  Display_Init();
+  uint32_t update_count = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -112,6 +113,7 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
     HAL_Delay(10000);
+    Display_Update(++update_count);
   }
   /* USER CODE END 3 */
 }
